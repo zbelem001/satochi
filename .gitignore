@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+ENV/
+env/
+.pytest_cache/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+logs/
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# temp
+*.tmp
+*.swp

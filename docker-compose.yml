@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  # 1. Base de données Time-Series (Pour stocker les ticks et l'historique M1/H1)
+  timescaledb:
+    image: timescale/timescaledb:latest-pg14
+    container_name: satochi_timescaledb
+    environment:
+      - POSTGRES_DB=satochi_market_data
+      - POSTGRES_USER=satochi_admin
+      - POSTGRES_PASSWORD=13135690Mm@
+    ports:
+      - "15432:5432"
+    volumes:
+      - timescaledb_data:/var/lib/postgresql/data
+    restart: always
+
+  # 2. In-Memory Cache (Pour la microstructure, les alertes NLP et la liaison API)
+  redis:
+    image: redis:alpine
+    container_name: satochi_redis
+    ports:
+      - "6380:6379"  # On map le port 6380 de l'ordinateur vers 6379 du conteneur
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: always
+
+volumes:
+  timescaledb_data:
+  redis_data:
