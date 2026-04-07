@@ -8,7 +8,7 @@ import requests
 from datetime import datetime
 
 # Importation du Risk Manager (Pour le dimensionnement Kelly) et du Broker
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from models.risk_manager import RiskManager
 from execution.broker_manager import BrokerManager
 
